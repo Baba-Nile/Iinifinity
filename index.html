@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Football & Education Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--primary:#0d47a1;
+--accent:#00c853;
+--dark:#0a192f;
+--light:#f4f7fb;
+--text:#333;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--light);color:var(--text);line-height:1.6}
+
+ 
+
+section{padding:100px 50px}
+.container{max-width:1200px;margin:auto}
+
+.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero h1{font-size:3.5rem}
+.hero p{margin:20px auto;max-width:600px}
+
+.btn{padding:12px 25px;background:var(--accent);border:none;color:#fff;border-radius:30px;cursor:pointer;transition:.3s}
+.btn:hover{background:#00a843}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.card{background:#fff;padding:25px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,.05);transition:.3s}
+.card:hover{transform:translateY(-8px)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:center}
+.stat{background:#fff;padding:30px;border-radius:12px}
+.stat h2{color:var(--primary)}
+
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:2rem}
+.section-title p{color:#666}
+
+/* EDUCATION SECTION */
+.education{
+background:#fff;border-radius:15px;padding:40px;box-shadow:0 10px 30px rgba(0,0,0,.05)
+}
+.education-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:30px}
+.education-card{background:var(--light);padding:25px;border-radius:12px}
+.education-card h3{margin-bottom:10px;color:var(--primary)}
+
+/* MATCHES */
+.schedule{background:#fff;border-radius:12px;padding:20px}
+.match{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee}
+
+/* NEWS */
+.news-card{background:#fff;padding:20px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.05)}
+.news-card small{color:#777}
+
+/* DONATE */
+.donate-box{background:#fff;padding:25px;border-radius:12px;text-align:center}
+.progress{height:8px;background:#eee;border-radius:5px;margin:10px 0}
+.progress div{height:100%;background:var(--accent);width:60%}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.gallery img{width:100%;border-radius:10px}
+
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;display:none;background:rgba(0,0,0,.7);justify-content:center;align-items:center}
+.modal-content{background:#fff;padding:30px;border-radius:10px;width:90%;max-width:400px}
+input,select{width:100%;padding:10px;margin:10px 0}
+
+footer{background:var(--dark);color:#fff;text-align:center;padding:20px}
+
+@media(max-width:768px){
+nav{display:none;flex-direction:column;position:absolute;top:70px;left:0;width:100%;background:var(--dark);padding:20px}
+nav.active{display:flex}
+.menu-toggle{display:block}
+.hero h1{font-size:2.2rem}
+}
+</style>
+</head>
+
+<body>
+<header class="header">
+
+  <div class="nav-container">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="infinity 1.jpeg" alt="Infinity Academy Logo">
+    </div>
+
+    <!-- TOGGLE -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- NAV -->
+    <nav id="nav" class="nav">
+
+      <a href="#" class="active">Home</a>
+      <a href="#education">Education</a>
+      <a href="#training">Training</a>
+      <a href="#matches">Matches</a>
+      <a href="#news">News</a>
+
+      <!-- CTA -->
+      <a href="#donate" class="cta-btn">Support Us</a>
+
+    </nav>
+
+  </div>
+
+</header>
+<style>
+  /* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid rgba(2, 12, 36, 0.08);
+}
+
+/* CONTAINER */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo img {
+  height: 48px;
+  transition: 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* LINKS */
+.nav a {
+  position: relative;
+  text-decoration: none;
+  color: #020c24;
+  font-size: 15px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* HOVER UNDERLINE (SMOOTH) */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #020c24;
+  transition: 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* ACTIVE */
+.nav a.active {
+  font-weight: 700;
+}
+
+.nav a.active::after {
+  width: 100%;
+}
+
+/* CTA BUTTON */
+.cta-btn {
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: #020c24;
+  color: #fff !important;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #3a506b;
+  transform: translateY(-2px);
+}
+
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #020c24;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(12px);
+
+    flex-direction: column;
+    align-items: center;
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition: 0.4s ease;
+  }
+
+  .nav a {
+    padding: 16px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav.active {
+    max-height: 500px;
+  }
+
+  /* HAMBURGER ANIMATION */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+</style>
+<script>
+  function toggleMenu() {
+  document.getElementById("nav").classList.toggle("active");
+  document.querySelector(".menu-toggle").classList.toggle("active");
+}
+</script>
+
+
+<section class="hero">
+
+  <!-- BACKGROUND -->
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1766260771551-5a3aa7cbd8b9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.
+    0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvb3RiYWxsJTIwa2lkc3xlbnwwfHwwfHx8MA%3D%3D" alt="Infinity Sports Center">
+  </div>
+
+  <!-- NAVY OVERLAY -->
+  <div class="hero-overlay"></div>
+
+  <!-- CONTENT -->
+  <div class="hero-content">
+
+    <span class="hero-tag">Infinity Sports Center</span>
+
+    <h1>
+      TRAIN. DEVELOP.<br>
+      COMPETE.
+    </h1>
+
+    <p>
+      A structured football development program focused on building discipline, technical skill, and elite performance.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#" class="btn primary">Join Program</a>
+      <a href="#" class="btn secondary">Explore Programs</a>
+    </div>
+
+  </div>
+
+</section>
+<style>
+  .hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+
+  overflow: hidden;
+}
+
+/* BACKGROUND */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+}
+
+/* NAVY OVERLAY (CONSISTENT BRAND) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(2, 12, 36, 0.85),
+    rgba(2, 12, 36, 0.75),
+    rgba(2, 12, 36, 0.9)
+  );
+}
+
+/* CONTENT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 850px;
+  padding: 0 20px;
+}
+
+/* TAG */
+.hero-tag {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #b8c7d9;
+  margin-bottom: 20px;
+}
+
+/* TITLE */
+.hero h1 {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* TEXT */
+.hero p {
+  font-size: 18px;
+  color: #d6e0ea;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+/* BUTTONS */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* BASE BUTTON */
+.btn {
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+/* PRIMARY (NAVY SOLID) */
+.btn.primary {
+  background: #020c24;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.btn.primary:hover {
+  background: #ffffff;
+  color: #020c24;
+}
+
+/* SECONDARY (OUTLINE STYLE) */
+.btn.secondary {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.btn.secondary:hover {
+  background: #ffffff;
+  color: #020c24;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+}
+</style>
+
+ 
+<section id="education" class="stories-section">
+  <div class="container">
+
+    <!-- SECTION HEADER -->
+    <div class="section-header">
+      <span class="section-tag fade-up">EDUCATION</span>
+      <h2 class="section-title fade-up">Building Athletes Beyond Football</h2>
+      <p class="section-subtitle fade-up">
+        We combine elite football training with structured education support, ensuring every athlete grows
+        academically, professionally, and personally for long-term success.
+      </p>
+    </div>
+
+    <!-- CARD 1 (LEFT IMAGE) -->
+    <div class="story-card animate-on-scroll">
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1617057119499-aea7d3eaef02?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGJsYWNrJTIwc2Nob29sJTIwa2lkfGVufDB8fDB8fHww" alt="School Sponsorship">
+      </div>
+      <div class="story-content">
+        <h3 class="story-title">School Sponsorship</h3>
+        <p>
+          We provide financial support to ensure talented athletes from disadvantaged backgrounds
+          can access uninterrupted education while pursuing their sporting careers.
+        </p>
+        <a href="#" class="story-btn">Read More</a>
+      </div>
+    </div>
+
+    <!-- CARD 2 (RIGHT IMAGE) -->
+    <div class="story-card reverse animate-on-scroll">
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1720420419622-5f1a528a8bd1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.
+        0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJsYWNrJTIwc2Nob29sJTIwa2lkJTIwd2l0aCUyMGJvb2tzfGVufDB8fDB8fHww" alt="Learning Materials">
+      </div>
+      <div class="story-content">
+        <h3 class="story-title">Learning Materials</h3>
+        <p>
+          We equip athletes with essential academic tools including books, uniforms, and resources,
+          ensuring they have everything needed to succeed in school.
+        </p>
+        <a href="#" class="story-btn">Read More</a>
+      </div>
+    </div>
+
+    <!-- CARD 3 (LEFT IMAGE) -->
+    <div class="story-card animate-on-scroll">
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1534740411152-36324737bcfe?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBlcnNvbiUyMHN1cHBvcnQlMjB3aXRoJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D" alt="Mentorship">
+      </div>
+      <div class="story-content">
+        <h3 class="story-title">Community Empowerment</h3>
+        <p>
+          Our mentorship programs help athletes develop discipline, leadership, and decision-making skills
+          through structured guidance from experienced professionals.
+        </p>
+        <a href="#" class="story-btn">Read More</a>
+      </div>
+    </div>
+
+    <!-- CARD 4 (RIGHT IMAGE) -->
+    <div class="story-card reverse animate-on-scroll">
+      <div class="story-image">
+        <img src="career.jpg" alt="Career Development">
+      </div>
+      <div class="story-content">
+        <h3 class="story-title">Career Development</h3>
+        <p>
+          We prepare athletes for life beyond football through career guidance, skills development,
+          and long-term planning for sustainable success.
+        </p>
+        <a href="#" class="story-btn">Read More</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+/* SECTION */
+.stories-section {
+  padding: 140px 20px;
+  background: #ffffff;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HEADER */
+.section-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 100px;
+}
+
+.section-tag {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #0b1d39;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  color: #3a506b;
+  margin-bottom: 25px;
+  line-height: 1.1;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* CARD (DEFAULT: IMAGE LEFT) */
+.story-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 100px;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+/* REVERSE (IMAGE RIGHT) */
+.story-card.reverse {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.story-card.reverse .story-image {
+  order: 2;
+}
+.story-card.reverse .story-content {
+  order: 1;
+}
+
+/* SHOW ON SCROLL */
+.story-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* IMAGE */
+.story-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease;
+}
+
+.story-image img:hover {
+  transform: scale(1.03);
+}
+
+/* CONTENT */
+.story-content {
+  position: relative;
+  padding-left: 25px;
+}
+
+.story-content:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 60px;
+  background: #0b1d39;
+}
+
+.story-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #0b1d39;
+  margin-bottom: 20px;
+}
+
+.story-content p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* BUTTON */
+.story-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid #0b1d39;
+  color: #0b1d39;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.story-btn:hover {
+  background: #0b1d39;
+  color: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+
+  .story-card,
+  .story-card.reverse {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .story-content {
+    padding-left: 0;
+  }
+
+  .story-content:before {
+    display: none;
+  }
+
+  .story-image img {
+    height: 320px;
+  }
+
+}
+
+</style>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".animate-on-scroll").forEach(el => {
+  observer.observe(el);
+});
+</script>
+
+
+<section id="news" class="news-section">
+
+  <div class="overlay"></div>
+
+  <div class="container">
+
+    <!-- TITLE -->
+    <div class="section-title">
+      <h2>Match Reports</h2>
+      <p>Official results, performance insights, and discipline records.</p>
+    </div>
+
+    <div class="news-grid">
+
+      <div class="news-card scroll-reveal">
+        <div class="top">
+          <span class="tag">WIN</span>
+          <span class="date">12 Mar 2026</span>
+        </div>
+
+        <h3>Infinity Academy 2 - 1 Tigers FC</h3>
+        <small>City Stadium</small>
+
+        <p>
+          A disciplined performance with a strong second-half comeback and clinical finishing.
+        </p>
+      </div>
+
+      <div class="news-card scroll-reveal">
+        <div class="top">
+          <span class="tag">WIN</span>
+          <span class="date">5 Mar 2026</span>
+        </div>
+
+        <h3>Infinity Academy 3 - 2 Eagles FC</h3>
+        <small>West Field</small>
+
+        <p>
+          A high-intensity match decided by a late winning goal showing resilience and control.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<style>
+  /* SECTION WITH STICKY BACKGROUND */
+.news-section {
+  position: relative;
+  padding: 120px 20px;
+
+  background: url("https://images.unsplash.com/photo-1524015368236-bbf6f72545b6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vdGJhbGwlMjBraWRzfGVufDB8fDB8fHww") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* DARK OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 12, 36, 0.45); /* lighter + more visible image */
+  z-index: 1;
+}
+
+/* CONTENT ABOVE OVERLAY */
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+/* TITLE */
+.section-title h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #fff; /* ✅ already white */
+}
+
+.section-title h2 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffffff; /* pure white */
+}
+
+.section-title p {
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+
+/* GRID */
+.news-grid {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* CARD (TRANSPARENT GLASS) */
+.news-card {
+  padding: 25px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+/* HOVER */
+.news-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* TOP */
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* TAG */
+.tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  background: #fff;
+  color: #020c24;
+
+  font-weight: 600;
+}
+
+/* DATE */
+.date {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+
+/* TITLE */
+.news-card h3 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+/* VENUE */
+.news-card small {
+  color: rgba(255,255,255,0.7);
+}
+
+/* TEXT */
+.news-card p {
+  margin-top: 10px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<section id="donate" class="donate-section">
+
+  <div class="container">
+
+    <!-- TITLE -->
+    <div class="section-title">
+      <h2>SUPPORT OUR PLAYERS</h2>
+      <p>
+        Your contribution helps young athletes access training, education, and essential support to grow into professionals.
+      </p>
+    </div>
+
+    <div class="donate-grid">
+
+      <!-- CARD -->
+      <div class="donate-card">
+        <h3>Transport Fund</h3>
+        <p>Helps players travel for training and competitive matches.</p>
+
+        <div class="progress">
+          <div style="width:65%"></div>
+        </div>
+
+        <button class="donate-btn" onclick="openDonateModal('Transport Fund')">
+          Donate Now
+        </button>
+      </div>
+
+      <!-- CARD -->
+      <div class="donate-card">
+        <h3>Education Fund</h3>
+        <p>Supports school fees, books, and learning materials.</p>
+
+        <div class="progress">
+          <div style="width:40%"></div>
+        </div>
+
+        <button class="donate-btn" onclick="openDonateModal('Education Fund')">
+          Donate Now
+        </button>
+      </div>
+
+      <!-- CARD -->
+      <div class="donate-card">
+        <h3>Food & Support</h3>
+        <p>Provides meals, kits, and basic daily support for players.</p>
+
+        <div class="progress">
+          <div style="width:75%"></div>
+        </div>
+
+        <button class="donate-btn" onclick="openDonateModal('Food & Support')">
+          Donate Now
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<style>
+  /* SECTION */
+.donate-section {
+  padding: 100px 20px;
+  background: #f4f7fb;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* TITLE */
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-size: 56px;
+  font-weight: 900;
+  color: #020c24;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.section-title p {
+  font-size: 20px;
+  color: #5a6b7a;
+  max-width: 700px;
+  margin: 10px auto 0;
+  line-height: 1.7;
+}
+
+/* GRID */
+.donate-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* CARD */
+.donate-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(2, 12, 36, 0.08);
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* HOVER */
+.donate-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(2, 12, 36, 0.12);
+}
+
+/* TOP ACCENT LINE */
+.donate-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  background: #020c24;
+}
+
+/* TITLE */
+.donate-card h3 {
+  font-size: 22px;
+  color: #020c24;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.donate-card p {
+  color: #5a6b7a;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* PROGRESS BAR */
+.progress {
+  width: 100%;
+  height: 10px;
+  background: #e6edf3;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+/* PROGRESS FILL */
+.progress div {
+  height: 100%;
+  background: linear-gradient(90deg, #020c24, #3a506b);
+  border-radius: 20px;
+  transition: width 1s ease;
+}
+
+/* BUTTON */
+.donate-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #020c24;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+/* BUTTON HOVER */
+.donate-btn:hover {
+  background: #ffffff;
+  color: #020c24;
+  border: 2px solid #020c24;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .donate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title h2 {
+    font-size: 36px;
+  }
+}
+</style>
+
+<div id="donateModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close" onclick="closeDonateModal()">&times;</span>
+
+    <h2 id="donationTitle">Secure Donation</h2>
+    <p class="subtitle">Complete your contribution safely</p>
+
+    <!-- STEP INDICATOR -->
+    <div class="steps">
+      <div class="step active">1. Details</div>
+      <div class="step">2. Payment</div>
+      <div class="step">3. Confirm</div>
+    </div>
+
+    <!-- CURRENCY + AMOUNT -->
+    <div class="form-group">
+      <label>Currency</label>
+      <select id="currency" onchange="updateCurrency()">
+        <option value="KES">KES</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="number" id="amount" placeholder="Enter amount" />
+    </div>
+
+    <!-- PAYMENT METHODS -->
+    <div class="payment-methods">
+      <button class="method active" onclick="selectMethod('card')">Card</button>
+      <button class="method" onclick="selectMethod('mpesa')">M-Pesa</button>
+      <button class="method" onclick="selectMethod('paypal')">PayPal</button>
+    </div>
+
+    <!-- CARD FORM -->
+    <div id="cardForm" class="payment-form active">
+      <input type="text" placeholder="Card Number" maxlength="19" />
+      <input type="text" placeholder="Cardholder Name" />
+      <div class="row">
+        <input type="text" placeholder="MM/YY" />
+        <input type="text" placeholder="CVC" />
+      </div>
+    </div>
+
+    <!-- M-PESA -->
+    <div id="mpesaForm" class="payment-form">
+      <input type="text" placeholder="Phone (2547...)" />
+    </div>
+
+    <!-- PAYPAL -->
+    <div id="paypalForm" class="payment-form">
+      <input type="email" placeholder="PayPal Email" />
+    </div>
+
+    <!-- BUTTON -->
+    <button class="pay-btn" onclick="submitPayment()">
+      Complete Payment
+    </button>
+
+  </div>
+</div>
+<style>
+  /* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(2,12,36,0.9);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* CARD */
+.modal-content {
+  background: #fff;
+  padding: 35px;
+  width: 95%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  animation: fadeIn 0.4s ease;
+}
+
+/* TITLE */
+h2 {
+  font-size: 26px;
+  color: #020c24;
+}
+
+.subtitle {
+  color: #6c7a89;
+  margin-bottom: 20px;
+}
+
+/* STEPS */
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.step {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.step.active {
+  color: #020c24;
+  font-weight: bold;
+}
+
+/* FORM */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-size: 13px;
+  color: #444;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  margin-top: 5px;
+  background: #f9fbfd;
+}
+
+/* PAYMENT METHODS */
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.method {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #e6edf3;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.method.active {
+  background: #020c24;
+  color: #fff;
+}
+
+/* PAYMENT FORMS */
+.payment-form {
+  display: none;
+}
+
+.payment-form.active {
+  display: block;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+/* BUTTON */
+.pay-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  background: #020c24;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pay-btn:hover {
+  background: #3a506b;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+</style>
+<script>
+  function openDonateModal(title) {
+  document.getElementById("donateModal").style.display = "flex";
+  document.getElementById("donationTitle").innerText = title;
+}
+
+function closeDonateModal() {
+  document.getElementById("donateModal").style.display = "none";
+}
+
+/* SWITCH PAYMENT METHOD */
+function selectMethod(method) {
+  document.querySelectorAll(".method").forEach(btn => btn.classList.remove("active"));
+  document.querySelectorAll(".payment-form").forEach(f => f.classList.remove("active"));
+
+  if (method === "card") {
+    document.getElementById("cardForm").classList.add("active");
+  }
+  if (method === "mpesa") {
+    document.getElementById("mpesaForm").classList.add("active");
+  }
+  if (method === "paypal") {
+    document.getElementById("paypalForm").classList.add("active");
+  }
+
+  event.target.classList.add("active");
+}
+
+/* CURRENCY SWITCH */
+function updateCurrency() {
+  const currency = document.getElementById("currency").value;
+  document.getElementById("amount").placeholder = `Amount (${currency})`;
+}
+
+/* PAYMENT HANDLER (PLACEHOLDER) */
+function submitPayment() {
+  alert("Processing secure payment...");
+}
+</script>
+  
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- ABOUT -->
+    <div class="footer-col">
+      <h3>Elite Football Academy</h3>
+      <p>
+        Developing talent on the pitch while empowering young minds through education,
+        discipline, and opportunity.
+      </p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#matches">Matches</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="footer-col">
+      <h3>Follow Us</h3>
+
+      <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">TikTok</a>
+        <a href="#">X (Twitter)</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    <p>© 2026 Elite Football & Education Academy. All Rights Reserved.</p>
+    <p>Designed & Managed by <span>Baba Nile Digital Africa</span></p>
+  </div>
+
+</footer>
+<style>
+  .footer {
+  background: linear-gradient(135deg, #0b1d39, #000);
+  color: #fff;
+  padding: 60px 20px 20px;
+  margin-top: 80px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.footer-col h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #ffffff;
+  position: relative;
+}
+
+.footer-col h3::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: #d90429;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+/* LINKS */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin: 10px 0;
+}
+
+.footer-col ul li a {
+  color: #cfcfcf;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #d90429;
+  padding-left: 5px;
+}
+
+/* SOCIAL */
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.socials a {
+  color: #cfcfcf;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #d90429;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  margin-top: 40px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.footer-bottom span {
+  color: #d90429;
+  font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-col h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .socials {
+    align-items: center;
+  }
+}
+</style>
+
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3>Support / Register</h3>
+<input placeholder="Name">
+<input placeholder="Amount">
+<select>
+<option>Mpesa</option>
+<option>Card</option>
+</select>
+<button class="btn">Submit</button>
+</div>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('nav').classList.toggle('active')}
+function openModal(){document.getElementById('modal').style.display='flex'}
+window.onclick=function(e){let m=document.getElementById('modal');if(e.target==m){m.style.display='none'}}
+</script>
+
+</body>
+</html>
